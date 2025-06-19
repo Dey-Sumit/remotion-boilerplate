@@ -3,9 +3,9 @@ import {
   AwsRegion,
   getRenderProgress,
 } from "@remotion/lambda/client";
-import { DISK, RAM, REGION, TIMEOUT } from "../../../../../config.mjs";
-import { ProgressResponse, ProgressRequest } from "../../../../../types/schema";
-import { executeApi } from "../../../../helpers/api-response";
+import { DISK, RAM, REGION, TIMEOUT } from "../../../../config.mjs";
+import { ProgressResponse, ProgressRequest } from "../../../../types/schema";
+import { executeApi } from "../../../../src/helpers/api-response";
 
 export const POST = executeApi<ProgressResponse, typeof ProgressRequest>(
   ProgressRequest,

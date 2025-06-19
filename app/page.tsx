@@ -11,11 +11,11 @@ import {
   VIDEO_FPS,
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
-} from "../../types/constants";
-import { RenderControls } from "../components/RenderControls";
-import { Spacing } from "../components/Spacing";
-import { Tips } from "../components/Tips";
-import { Main } from "../video/MyComp/Main";
+} from "../types/constants";
+import { RenderControls } from "../src/components/RenderControls";
+import { Spacing } from "../src/components/Spacing";
+import { Tips } from "../src/components/Tips";
+import { Main } from "../src/video/MyComp/Main";
 
 const Home: NextPage = () => {
   const [text, setText] = useState<string>(defaultMyCompProps.title);
@@ -28,8 +28,8 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <div className="max-w-screen-md m-auto mb-5">
-        <div className="overflow-hidden rounded-geist shadow-[0_0_200px_rgba(0,0,0,0.15)] mb-10 mt-16">
+      <div className="m-auto mb-5 max-w-screen-md">
+        <div className="rounded-geist mt-16 mb-10 overflow-hidden shadow-[0_0_200px_rgba(0,0,0,0.15)]">
           <Player
             component={Main}
             inputProps={inputProps}
