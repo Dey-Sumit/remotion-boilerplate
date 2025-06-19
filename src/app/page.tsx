@@ -15,7 +15,7 @@ import {
 import { RenderControls } from "../components/RenderControls";
 import { Spacing } from "../components/Spacing";
 import { Tips } from "../components/Tips";
-import { Main } from "../remotion/MyComp/Main";
+import { Main } from "../video/MyComp/Main";
 
 const Home: NextPage = () => {
   const [text, setText] = useState<string>(defaultMyCompProps.title);
