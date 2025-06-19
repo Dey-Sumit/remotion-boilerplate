@@ -25,7 +25,9 @@
     "@remotion/player": "^4.0.0",
     "@remotion/shapes": "^4.0.0",
     "@remotion/tailwind-v4": "^4.0.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "2.1.1",
+    "lucide-react": "^0.518.0",
     "next": "15.2.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -50,6 +52,7 @@
     "prettier-plugin-tailwindcss": "^0.6.13",
     "tailwindcss": "4.0.3",
     "tsconfig-paths-webpack-plugin": "^4.2.0",
+    "tw-animate-css": "^1.3.4",
     "typescript": "5.8.2"
   }
 }
