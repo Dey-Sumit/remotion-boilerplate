@@ -6,7 +6,7 @@ import {
 import dotenv from "dotenv";
 import path from "path";
 import { DISK, RAM, REGION, SITE_NAME, TIMEOUT } from "./config.mjs";
-import { webpackOverride } from "./src/video/webpack-override.mjs";
+import { webpackOverride } from "./remo/video/webpack-override.mjs";
 
 console.log("Selected region:", REGION);
 dotenv.config();
@@ -63,7 +63,7 @@ console.log(
 process.stdout.write("Deploying site... ");
 const { siteName } = await deploySite({
   bucketName,
-  entryPoint: path.join(process.cwd(), "src", "video", "index.ts"),
+  entryPoint: path.join(process.cwd(), "remo", "video", "index.ts"),
   siteName: SITE_NAME,
   region: REGION,
   options: { webpackOverride },

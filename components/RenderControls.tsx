@@ -1,16 +1,14 @@
 import { z } from "zod";
-
-import { COMP_NAME, CompositionProps } from "../../types/constants";
-import { useRendering } from "../../helpers/use-rendering";
-import React from "react";
-import { Input } from "../../components/Input";
-import { InputContainer } from "../../components/Container";
-import { AlignEnd } from "../../components/AlignEnd";
-import { Button } from "../../components/Button";
-import { ErrorComp } from "../../components/Error";
-import { ProgressBar } from "../../components/ProgressBar";
-import { Spacing } from "../../components/Spacing";
+import { AlignEnd } from "./AlignEnd";
+import { Button } from "./Button";
+import { InputContainer } from "./Container";
 import { DownloadButton } from "./DownloadButton";
+import { ErrorComp } from "./Error";
+import { Input } from "./Input";
+import { ProgressBar } from "./ProgressBar";
+import { Spacing } from "./Spacing";
+import { COMP_NAME, CompositionProps } from "../types/constants";
+import { useRendering } from "../helpers/use-rendering";
 
 export const RenderControls: React.FC<{
   text: string;

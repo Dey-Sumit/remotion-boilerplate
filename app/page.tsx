@@ -12,10 +12,10 @@ import {
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
 } from "../types/constants";
-import { RenderControls } from "../src/components/RenderControls";
-import { Spacing } from "../src/components/Spacing";
-import { Tips } from "../src/components/Tips";
-import { Main } from "../src/video/MyComp/Main";
+import { RenderControls } from "../components/RenderControls";
+import { Spacing } from "../components/Spacing";
+import { Tips } from "../components/Tips";
+import { Main } from "../remo/video/MyComp/Main";
 
 const Home: NextPage = () => {
   const [text, setText] = useState<string>(defaultMyCompProps.title);
