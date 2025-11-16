@@ -1,17 +1,18 @@
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
 
-import { COMP_NAME, CompositionProps } from "../types/constants";
+import { CompositionProps } from "../types/constants";
 import { useRendering } from "../helpers/use-rendering";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Progress } from "./ui/progress";
 import { Alert, AlertDescription } from "./ui/alert";
 import { DownloadButton } from "./download-button";
+import { COMP_NAME } from "@/app/page";
 
 export const RenderControls: React.FC<{
   text: string;
-  setText: React.Dispatch<React.SetStateAction<string>>;
+  setText: (value: string) => void;
   inputProps: z.infer<typeof CompositionProps>;
 }> = ({ text, setText, inputProps }) => {
   const { renderMedia, state, undo } = useRendering(COMP_NAME, inputProps);

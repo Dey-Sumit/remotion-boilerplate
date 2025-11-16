@@ -2,19 +2,22 @@
 
 import { Player } from "@remotion/player";
 import type { NextPage } from "next";
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { z } from "zod";
-import { defaultMyCompProps, CompositionProps } from "../types/constants";
+import { CompositionProps } from "../types/constants";
 import { RenderControls } from "../components/render-controls";
+import { Main } from "../remo/composition/boilerplate-composition/main";
+import useEditorStore from "@/store/editor-state";
+
 const DURATION_IN_FRAMES = 200;
 const VIDEO_WIDTH = 1280;
 const VIDEO_HEIGHT = 720;
 const VIDEO_FPS = 30;
 export const COMP_NAME = "MyComp";
-import { Main } from "../remo/composition/boilerplate-composition/main";
 
 const Home: NextPage = () => {
-  const [text, setText] = useState<string>(defaultMyCompProps.title);
+  const text = useEditorStore((state) => state.editorContent);
+  const setText = useEditorStore((state) => state.setEditorContent);
 
   const inputProps: z.infer<typeof CompositionProps> = useMemo(() => {
     return {
