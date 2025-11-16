@@ -2,23 +2,22 @@
 
 import { Player } from "@remotion/player";
 import type { NextPage } from "next";
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { z } from "zod";
-import {
-  defaultMyCompProps,
-  CompositionProps,
-  DURATION_IN_FRAMES,
-  VIDEO_FPS,
-  VIDEO_HEIGHT,
-  VIDEO_WIDTH,
-} from "../types/constants";
-import { RenderControls } from "../components/RenderControls";
-import { Spacing } from "../components/Spacing";
-import { Tips } from "../components/Tips";
-import { Main } from "../remo/video/MyComp/Main";
+import { CompositionProps } from "../types/constants";
+import { RenderControls } from "../components/render-controls";
+import { Main } from "../remo/composition/boilerplate-composition/main";
+import useEditorStore from "@/store/editor-state";
+
+const DURATION_IN_FRAMES = 200;
+const VIDEO_WIDTH = 1280;
+const VIDEO_HEIGHT = 720;
+const VIDEO_FPS = 30;
+export const COMP_NAME = "MyComp";
 
 const Home: NextPage = () => {
-  const [text, setText] = useState<string>(defaultMyCompProps.title);
+  const text = useEditorStore((state) => state.editorContent);
+  const setText = useEditorStore((state) => state.setEditorContent);
 
   const inputProps: z.infer<typeof CompositionProps> = useMemo(() => {
     return {
@@ -27,9 +26,14 @@ const Home: NextPage = () => {
   }, [text]);
 
   return (
-    <div>
-      <div className="m-auto mb-5 max-w-screen-md">
-        <div className="rounded-geist mt-16 mb-10 overflow-hidden shadow-[0_0_200px_rgba(0,0,0,0.15)]">
+    <div className="flex min-h-screen flex-col p-12 text-center">
+      <div className="h-[600px]">
+        <div
+          className="rounded-geist mx-auto max-h-full overflow-hidden shadow-[0_0_200px_rgba(0,0,0,0.15)]"
+          style={{
+            aspectRatio: VIDEO_WIDTH / VIDEO_HEIGHT,
+          }}
+        >
           <Player
             component={Main}
             inputProps={inputProps}
@@ -47,16 +51,9 @@ const Home: NextPage = () => {
             loop
           />
         </div>
-        <RenderControls
-          text={text}
-          setText={setText}
-          inputProps={inputProps}
-        ></RenderControls>
-        <Spacing></Spacing>
-        <Spacing></Spacing>
-        <Spacing></Spacing>
-        <Spacing></Spacing>
-        <Tips></Tips>
+      </div>
+      <div className="flex-1">
+        <RenderControls text={text} setText={setText} inputProps={inputProps} />
       </div>
     </div>
   );

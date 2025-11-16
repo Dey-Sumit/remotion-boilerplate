@@ -1,14 +1,15 @@
 import { Composition } from "remotion";
-import { Main } from "./MyComp/Main";
-import {
-  COMP_NAME,
-  defaultMyCompProps,
-  DURATION_IN_FRAMES,
-  VIDEO_FPS,
-  VIDEO_HEIGHT,
-  VIDEO_WIDTH,
-} from "../../types/constants";
-import { NextLogo } from "./MyComp/NextLogo";
+import { Main } from "../composition/boilerplate-composition/main";
+import { defaultMyCompProps } from "../../types/constants";
+import { NextLogo } from "../composition/boilerplate-composition/next-logo";
+
+import DelbaComposition from "../composition/delba/index";
+import { COMP_NAME } from "@/app/page";
+
+const DURATION_IN_FRAMES = 200;
+const VIDEO_WIDTH = 1280;
+const VIDEO_HEIGHT = 720;
+const VIDEO_FPS = 30;
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -33,6 +34,8 @@ export const RemotionRoot: React.FC = () => {
           outProgress: 0,
         }}
       />
+
+      <DelbaComposition />
     </>
   );
 };
