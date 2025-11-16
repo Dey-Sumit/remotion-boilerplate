@@ -10,6 +10,8 @@ import {
 } from "../../types/constants";
 import { NextLogo } from "./MyComp/NextLogo";
 
+import RemotionARoot from "../composition/delba/index";
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -33,6 +35,19 @@ export const RemotionRoot: React.FC = () => {
           outProgress: 0,
         }}
       />
+
+      {/* <Composition
+        id="code-transition-composition"
+        component={NewRemotionComposition}
+        defaultProps={{
+          slides: TEST_COMPOSITION_PROPS.slides,
+        }}
+        fps={30}
+        width={1920}
+        height={1080}
+        durationInFrames={600}
+      /> */}
+      <RemotionARoot />
     </>
   );
 };
