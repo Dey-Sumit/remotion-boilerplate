@@ -1,14 +1,13 @@
 import { z } from "zod";
-import { AlignEnd } from "./AlignEnd";
-import { Button } from "./Button";
-import { InputContainer } from "./Container";
-import { DownloadButton } from "./DownloadButton";
-import { ErrorComp } from "./Error";
-import { Input } from "./Input";
-import { ProgressBar } from "./ProgressBar";
-import { Spacing } from "./Spacing";
+import { Loader2 } from "lucide-react";
+
 import { COMP_NAME, CompositionProps } from "../types/constants";
 import { useRendering } from "../helpers/use-rendering";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Progress } from "./ui/progress";
+import { Alert, AlertDescription } from "./ui/alert";
+import { DownloadButton } from "./download-button";
 
 export const RenderControls: React.FC<{
   text: string;
@@ -18,42 +17,48 @@ export const RenderControls: React.FC<{
   const { renderMedia, state, undo } = useRendering(COMP_NAME, inputProps);
 
   return (
-    <InputContainer>
+    <div className="mx-auto w-full max-w-2xl space-y-4 p-4">
       {state.status === "init" ||
       state.status === "invoking" ||
       state.status === "error" ? (
         <>
           <Input
             disabled={state.status === "invoking"}
-            setText={setText}
-            text={text}
-          ></Input>
-          <Spacing></Spacing>
-          <AlignEnd>
+            onChange={(e) => setText(e.target.value)}
+            value={text}
+            placeholder="Enter text..."
+          />
+
+          <div className="flex justify-end">
             <Button
               disabled={state.status === "invoking"}
-              loading={state.status === "invoking"}
               onClick={renderMedia}
             >
+              {state.status === "invoking" && (
+                <Loader2 className="animate-spin" />
+              )}
               Render video
             </Button>
-          </AlignEnd>
+          </div>
+
           {state.status === "error" ? (
-            <ErrorComp message={state.error.message}></ErrorComp>
+            <Alert variant="destructive">
+              <AlertDescription>{state.error.message}</AlertDescription>
+            </Alert>
           ) : null}
         </>
       ) : null}
       {state.status === "rendering" || state.status === "done" ? (
         <>
-          <ProgressBar
-            progress={state.status === "rendering" ? state.progress : 1}
+          <Progress
+            value={state.status === "rendering" ? state.progress * 100 : 100}
           />
-          <Spacing></Spacing>
-          <AlignEnd>
-            <DownloadButton undo={undo} state={state}></DownloadButton>
-          </AlignEnd>
+
+          <div className="flex justify-end">
+            <DownloadButton undo={undo} state={state} />
+          </div>
         </>
       ) : null}
-    </InputContainer>
+    </div>
   );
 };

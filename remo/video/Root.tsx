@@ -1,5 +1,5 @@
 import { Composition } from "remotion";
-import { Main } from "./MyComp/Main";
+import { Main } from "../composition/boilerplate-composition/main";
 import {
   COMP_NAME,
   defaultMyCompProps,
@@ -8,7 +8,7 @@ import {
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
 } from "../../types/constants";
-import { NextLogo } from "./MyComp/NextLogo";
+import { NextLogo } from "../composition/boilerplate-composition/next-logo";
 
 import RemotionARoot from "../composition/delba/index";
 

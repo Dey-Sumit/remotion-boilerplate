@@ -7,11 +7,11 @@ import {
   useVideoConfig,
 } from "remotion";
 import { CompositionProps } from "../../../types/constants";
-import { NextLogo } from "./NextLogo";
+import { NextLogo } from "./next-logo";
 import { loadFont, fontFamily } from "@remotion/google-fonts/Inter";
 import React from "react";
-import { Rings } from "./Rings";
-import { TextFade } from "./TextFade";
+import { TextFade } from "./text-fade";
+import { Rings } from "./rings";
 
 loadFont("normal", {
   subsets: ["latin"],
@@ -38,14 +38,14 @@ export const Main = ({ title }: z.infer<typeof CompositionProps>) => {
     <AbsoluteFill className="bg-white">
       <Sequence durationInFrames={transitionStart + transitionDuration}>
         <Rings outProgress={logoOut}></Rings>
-        <AbsoluteFill className="justify-center items-center">
+        <AbsoluteFill className="items-center justify-center">
           <NextLogo outProgress={logoOut}></NextLogo>
         </AbsoluteFill>
       </Sequence>
       <Sequence from={transitionStart + transitionDuration / 2}>
         <TextFade>
           <h1
-            className="text-[70px] font-bold"
+            className="text-[70px] font-bold text-black"
             style={{
               fontFamily,
             }}
