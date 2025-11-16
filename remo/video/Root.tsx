@@ -1,16 +1,15 @@
 import { Composition } from "remotion";
 import { Main } from "../composition/boilerplate-composition/main";
-import {
-  COMP_NAME,
-  defaultMyCompProps,
-  DURATION_IN_FRAMES,
-  VIDEO_FPS,
-  VIDEO_HEIGHT,
-  VIDEO_WIDTH,
-} from "../../types/constants";
+import { defaultMyCompProps } from "../../types/constants";
 import { NextLogo } from "../composition/boilerplate-composition/next-logo";
 
-import RemotionARoot from "../composition/delba/index";
+import DelbaComposition from "../composition/delba/index";
+import { COMP_NAME } from "@/app/page";
+
+const DURATION_IN_FRAMES = 200;
+const VIDEO_WIDTH = 1280;
+const VIDEO_HEIGHT = 720;
+const VIDEO_FPS = 30;
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -36,18 +35,7 @@ export const RemotionRoot: React.FC = () => {
         }}
       />
 
-      {/* <Composition
-        id="code-transition-composition"
-        component={NewRemotionComposition}
-        defaultProps={{
-          slides: TEST_COMPOSITION_PROPS.slides,
-        }}
-        fps={30}
-        width={1920}
-        height={1080}
-        durationInFrames={600}
-      /> */}
-      <RemotionARoot />
+      <DelbaComposition />
     </>
   );
 };

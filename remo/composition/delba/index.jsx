@@ -18,11 +18,7 @@ const { steps } = parseRoot(
   }),
 );
 
-console.log({ steps });
-
-export default function RemotionARoot() {
-  console.log("Rendering Delba video");
-
+export default function DelbaComposition() {
   const duration = steps.reduce((acc, step) => acc + step.duration, 0);
   return (
     <Composition
